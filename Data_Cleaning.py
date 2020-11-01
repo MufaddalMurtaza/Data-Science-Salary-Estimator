@@ -19,7 +19,7 @@ minus_perhr = minus_kd.apply(lambda x: x.lower().replace('per hour', ""))
 df['hourly'] = df['Salary Estimate'].apply(lambda x: 1 if 'per hour' in x.lower() else 0)
 df['min_salary'] = minus_perhr.apply(lambda x: int(x.split()[0]))
 df['max_salary'] = minus_perhr.apply(lambda x: int(x.split()[1]))
-df['avg_salary'] = df['min_salary'] + df['max_salary'] / 2
+df['avg_salary'] = (df['min_salary'] + df['max_salary']) / 2
 
 #Cleaning Company name column
 df['Cleaned_company_name'] = df.apply(lambda x: x['Company Name'] if x['Rating'] < 0 else x['Company Name'][:-4], axis=1)
@@ -65,7 +65,7 @@ df['Matplotlib'] = df['Job Description'].apply(lambda x: 1 if 'matplotlib' in x.
 #Pandas
 df['Pandas'] = df['Job Description'].apply(lambda x: 1 if 'pandas' in x.lower() else 0)
 #Seaborne
-df['Seaborne'] = df['Job Description'].apply(lambda x: 1 if 'seaborne' in x.lower() else 0)
+df['Seaborn'] = df['Job Description'].apply(lambda x: 1 if 'seaborn' in x.lower() else 0)
 #Docker
 df['Docker'] = df['Job Description'].apply(lambda x: 1 if 'docker' in x.lower() else 0)
 #Kubernetes
