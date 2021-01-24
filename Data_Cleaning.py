@@ -74,9 +74,14 @@ df['Kubernetes'] = df['Job Description'].apply(lambda x: 1 if 'kubernetes' in x.
 df['Neural Networks'] = df['Job Description'].apply(lambda x: 1 if 'neural networks' in x.lower()
                                                                 or 'deep learning' in x.lower() else 0)
 #R-Studio
-df['R'] = df['Job Description'].apply(lambda x: 1 if 'r' in x.lower() or
-                                                    'r-studio' in x.lower()
-                                                    or 'r studio' in x.lower() else 0)
+df['R'] = df['Job Description'].apply(lambda x: 1 if 'r-studio' in x.lower()
+                                                    or 'r studio' in x.lower()
+                                                     or ' r ' in x.lower() else 0)
+#Nosql
+df['Nosql'] = df['Job Description'].apply(lambda x: 1 if 'nosql' in x.lower() or
+                                                        'cassandra' in x.lower() or
+                                                         'mongodb' in x.lower() or
+                                                         'dynamodb' in x.lower() else 0)
 
 #Printing the value counts for all the languages and packages
 columns = df.columns
